@@ -1,18 +1,23 @@
-# Use the official Node.js image
+# Use the official Node.js image as a base image
 FROM node:14
 
-# Create and change to the app directory
-WORKDIR /usr/src/app
+# Set the working directory
+WORKDIR /app
 
-# Install app dependencies
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy app files
+# Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose the app port
+# Expose the port the app runs on
 EXPOSE 3000
 
-# Start the app
+# Define the environment variable
+ENV NODE_ENV=production
+
+# Start the application
 CMD ["node", "src/app.js"]
