@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: ecommerce
+      MYSQL_DATABASE: miniproject-backend
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
@@ -21,10 +21,10 @@ services:
       - '3000:3000'
     environment:
       DB_HOST: db
-      DB_NAME: ecommerce
+      DB_NAME: miniproject-backend
       DB_USER: user
       DB_PASSWORD: password
-      JWT_SECRET: your_jwt_secret
+      JWT_SECRET: supersecretkey12345
     depends_on:
       - db
 
