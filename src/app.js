@@ -2,12 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./config/database');
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
+const authenticateToken = require('./middleware/authMiddleware');
 
 const app = express();
 app.use(bodyParser.json());
 
-// Routes
+// Public routes
 app.use('/api', userRoutes);
+app.use('/api', productRoutes);
 
 // Test the database connection
 sequelize.authenticate()
